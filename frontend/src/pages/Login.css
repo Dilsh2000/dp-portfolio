@@ -1,0 +1,32 @@
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, rgba(0, 242, 254, 0.1) 0%, var(--bg-color) 70%);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 3rem 2rem;
+}
+
+.error-text {
+    color: #ef4444;
+    font-size: 0.9rem;
+    background: rgba(239, 68, 68, 0.1);
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.back-link {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: var(--primary);
+}

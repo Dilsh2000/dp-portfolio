@@ -1,0 +1,38 @@
+.theme-toggle {
+    background: var(--surface-color);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 1.2rem;
+    z-index: 1001;
+}
+
+.theme-toggle:hover {
+    background: var(--glass-bg);
+    transform: rotate(20deg) scale(1.1);
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.theme-toggle .sun {
+    color: #ffb800;
+}
+
+.theme-toggle .moon {
+    color: #4facfe;
+}
+
+@media (max-width: 960px) {
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}

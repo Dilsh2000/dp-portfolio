@@ -1,0 +1,100 @@
+.admin-dashboard {
+    min-height: 100vh;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.admin-form-section {
+    padding: 2rem;
+}
+
+.admin-project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    transition: transform 0.2s;
+}
+
+.admin-project-item:hover {
+    transform: translateX(5px);
+    border-color: var(--primary);
+}
+
+.text-primary {
+    color: var(--primary);
+    margin-bottom: 0.2rem;
+}
+
+.admin-project-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.action-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.edit-btn {
+    color: var(--secondary);
+}
+
+.edit-btn:hover {
+    color: var(--primary);
+    transform: scale(1.1);
+}
+
+.delete-btn {
+    color: var(--text-muted);
+}
+
+.delete-btn:hover {
+    color: #ef4444;
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 960px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .admin-form-section {
+        padding: 1.5rem;
+    }
+
+    .admin-project-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.2rem;
+    }
+
+    .admin-project-actions {
+        width: 100%;
+        justify-content: flex-end;
+        border-top: 1px solid var(--glass-border);
+        padding-top: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .admin-dashboard .container {
+        padding-top: 80px !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    .admin-project-item h4 {
+        font-size: 1.1rem;
+    }
+}
