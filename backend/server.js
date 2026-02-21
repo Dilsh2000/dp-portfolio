@@ -19,7 +19,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 
 app.get('/', (req, res) => {
-    res.send('API is running...');
+    const status = mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected';
+    res.send(`API is running... (MongoDB Status: ${status})`);
 });
 
 const PORT = process.env.PORT || 5000;
