@@ -18,10 +18,21 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 
+// Health check / Root route
 app.get('/', (req, res) => {
     const status = mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected';
-    res.send(`API is running... (MongoDB Status: ${status})`);
+    res.json({
+        message: 'Portfolio API is running...',
+        mongodb: status,
+        environment: process.env.NODE_ENV || 'development'
+    });
 });
+
+// Fallback for undefined routes
+app.use((req, res) => {
+    res.status(404).json({ message: `Route not found: ${req.originalUrl}` });
+});
+
 
 const PORT = process.env.PORT || 5000;
 if (process.env.NODE_ENV !== 'production') {
