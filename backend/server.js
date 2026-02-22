@@ -11,9 +11,22 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(process.env.MONGODB_URI)
-    .then(() => console.log('MongoDB connected'))
-    .catch(err => console.log('MongoDB connection error:', err));
+const mongoURI = process.env.MONGODB_URI;
+
+if (!mongoURI) {
+    console.error('ERROR: MONGODB_URI is not defined in environment variables');
+}
+
+mongoose.connect(mongoURI)
+    .then(() => console.log('MongoDB connected successfully'))
+    .catch(err => {
+        console.error('MongoDB connection error details:');
+        console.error(err.message);
+        if (err.message.includes('unescaped characters')) {
+            console.error('HINT: Your MongoDB password contains special characters that need to be URL encoded (e.g., @ -> %40). Please check your MONGODB_URI in Vercel settings.');
+        }
+    });
+
 
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
