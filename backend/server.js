@@ -11,13 +11,17 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const mongoURI = process.env.MONGODB_URI;
+let mongoURI = process.env.MONGODB_URI;
 
 if (!mongoURI) {
     console.error('ERROR: MONGODB_URI is not defined in environment variables');
+} else {
+    // Trim any accidental spaces or newlines
+    mongoURI = mongoURI.trim().replace(/[\n\r]/g, '');
 }
 
 mongoose.connect(mongoURI)
+
     .then(() => console.log('MongoDB connected successfully'))
     .catch(err => {
         console.error('MongoDB connection error details:');
